@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.addressbook.apps.model.Contacts;
-
 public class AddressBookMain {
     private static List<Contacts> contacts = new ArrayList<>();
     
@@ -39,6 +38,16 @@ public class AddressBookMain {
     	}
     	System.out.println("User Not Found ");
     }
+    public static void delete(String name) {
+    	for(Contacts c: contacts) {
+    		if(name.equalsIgnoreCase(c.getFirstName()+" "+c.getLastName())) {
+    			System.out.println("Deleted contact : "+c.toString());
+    			contacts.remove(c);
+    			return;
+    		}
+    	}
+    	System.out.println("User Not Found");
+    }
     public static void main(String[] args ) throws IOException{
       
     	add("lucky:pal:berkhera:bhopal:MP:12345:83056144536:pallucky936@gmail.com");
@@ -52,7 +61,12 @@ public class AddressBookMain {
     	for(Contacts c : contacts) {
     		System.out.println(c.toString());
     	}
+    	System.out.println("\n");
+    	delete("nageshwar patel");
+    	System.out.println("\n");
+    	for(Contacts c : contacts) {
+    		System.out.println(c.toString());
+    	}
     }
     
 }
-    
