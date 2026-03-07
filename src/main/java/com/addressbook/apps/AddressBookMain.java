@@ -1,4 +1,6 @@
 package com.addressbook.apps;
+
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,7 +10,7 @@ import java.util.List;
 import com.addressbook.apps.model.Contacts;
 
 public class AddressBookMain {
-    private static List<Contacts> contacts = new ArrayList<>();
+    private static List<Contacts> contacts = new ArrayList<>();    //Helps to add multiple person in the Address book App
     
     public static void add(String s) {
     	String[] arr = s.split(":");
