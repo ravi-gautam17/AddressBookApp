@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-import com.addressbook.apps.model.Contacts;
+import com.addressBook.apps.model.Contacts;
 
 public class AddressBookMain {
 	static Map<String,AddressBook> addressBook =new HashMap<>();
