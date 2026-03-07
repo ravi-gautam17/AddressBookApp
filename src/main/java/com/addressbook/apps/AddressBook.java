@@ -1,9 +1,12 @@
 package com.addressbook.apps;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import com.addressbook.apps.model.Contacts;
 
@@ -182,5 +185,13 @@ public class AddressBook {
 	    	state = state.toLowerCase();
 	    	return mapByState.get(state);
 	    }
+	    
+	   public Map<String,Integer> countByCity(){
+		   return mapByCity.entrySet().stream().collect(Collectors.toMap(a->a.getKey(),a->a.getValue().size()));
+	   }
 	   
+	   public Map<String,Integer> countByState(){
+		   return mapByState.entrySet().stream().collect(Collectors.toMap(a->a.getKey(),a->a.getValue().size()));
+	   }
+	
 }
