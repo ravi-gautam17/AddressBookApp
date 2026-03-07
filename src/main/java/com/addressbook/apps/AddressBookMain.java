@@ -1,6 +1,11 @@
 package com.addressbook.apps;
 
+import java.io.BufferedReader;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,7 +13,7 @@ import java.util.Map;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-import com.addressBook.apps.model.Contacts;
+import com.addressbook.apps.model.Contacts;
 
 public class AddressBookMain {
 	static Map<String,AddressBook> addressBook =new HashMap<>();
@@ -139,14 +144,25 @@ public class AddressBookMain {
 		AddressBook ad = addressBook.get(addressBookName);
 		return ad.sortByZipCode();
 	}
+	public static void writeFileData(String addressBookName,String path) {
+		addressBookName = addressBookName.toLowerCase();
+		AddressBook ad = addressBook.get(addressBookName);
+		try {
+			ad.writeInfile(path);
+		} catch (IOException e) {
+		   System.out.println("File unable to write");
+		}
+	}
     public static void main(String[] args ) throws IOException{
-        addAddress("Book1");
+      
         
-        addContacts("Book1","lucky:pal:berkhera:bhopal:MP:12345:83056144536:pallucky936@gmail.com");
-        addContacts("Book1","Himesh:kurmi:baisa:sagar:MP:462022:89564122121:himeshkurmi@gmail.com");
-        addContacts("Book1", "nageshwar:patel:maiyar:katni:MP:11111:7845129654:nageshwar@gmail.com");
-        addContacts("Book1","lucky:pal:berkhera:bhopal:MP:12345:83056144536:pallucky936@gmail.com");
-        
+        BufferedReader read = new BufferedReader(new FileReader("input.txt"));
+        String addresBookName = read.readLine();
+        addAddress(addresBookName);
+        String line;
+        while((line=read.readLine())!=null) {
+        	addContacts(addresBookName,line);
+        }
         System.out.println("\n");
         System.out.println(viewContact("book1"));
         System.out.println("\n");
@@ -175,6 +191,8 @@ public class AddressBookMain {
         System.out.println("\nsorted by city : "+sortByCity("book1"));
         System.out.println("\nsorted by state: "+sortByState("Book1"));
         System.out.println("\nsorted by zip  : "+sortByZipCode("book1"));
+        
+        writeFileData(addresBookName,"output.txt");
     }
     
 }
