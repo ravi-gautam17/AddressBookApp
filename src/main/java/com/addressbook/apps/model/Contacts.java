@@ -1,14 +1,14 @@
 package com.addressbook.apps.model;
 
 public class Contacts {
-    private String firstName;
-    private String lastName;
-    private String address;
-    private String city;
-    private String state;
-    private int zip;
-    private String phoneNo;
-    private String email;
+     private String firstName;
+     private String lastName;
+     private String address;
+     private String city;
+     private String state;
+     private int zip;
+     private String phoneNo;
+     private String email;
 	 public Contacts(String firstName, String lastName, String address, String city, String state, int zip,
 			String phoneNo, String email) {
 		super();
@@ -72,17 +72,17 @@ public class Contacts {
 	 @Override
 	 public String toString() {
 		return "Contacts [firstName=" + firstName + ", lastName=" + lastName + ", address=" + address + ", city=" + city
-				+ ", state=" + state + ", zip=" + zip + ", phoneNo=" + phoneNo + ", email=" + email + "]";
+				+ ", state=" + state + ", zip=" + zip + ", phoneNo=" + phoneNo + ", email=" + email + "]\n";
 	 }
-    
+     
 	 //Override the equals method to compare full name
-   @Override
-   public boolean equals(Object obj) {
-   	if(this==obj) return true;
-       
-   	if(obj==null||this.getClass()!=obj.getClass()) return false;
-   	
-   	Contacts con = (Contacts) obj;
-   	return (getFirstName()+" "+getLastName()).equalsIgnoreCase(con.getFirstName()+" "+con.getLastName());
-   } 
+    @Override
+    public boolean equals(Object obj) {
+    	if(this==obj) return true;
+        
+    	if(obj==null||this.getClass()!=obj.getClass()) return false;
+    	
+    	Contacts con = (Contacts) obj;
+    	return (getFirstName()+" "+getLastName()).equalsIgnoreCase(con.getFirstName()+" "+con.getLastName());
+    } 
 }
