@@ -116,7 +116,11 @@ public class AddressBookMain {
 		
 		return ad.countByState();
 	}
-	
+	public static List<Contacts> sortByName(String addressBookName){
+		addressBookName = addressBookName.toLowerCase();
+		AddressBook ad = addressBook.get(addressBookName);
+		return ad.sortByName();
+	}
     public static void main(String[] args ) throws IOException{
         addAddress("Book1");
         
@@ -149,7 +153,7 @@ public class AddressBookMain {
         System.out.println("\nCount people in city addressBook 1 : "+countByCity("Book1")); 
         System.out.println("\nCount people in state in addressBook 1 : "+countByState("Book1"));
         
-        
+        System.out.println("\nsorted by name : "+sortByName("Book1"));
     }
     
 }
