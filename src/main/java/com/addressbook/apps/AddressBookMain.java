@@ -121,6 +121,24 @@ public class AddressBookMain {
 		AddressBook ad = addressBook.get(addressBookName);
 		return ad.sortByName();
 	}
+	
+	public static List<Contacts> sortByCity(String addressBookName){
+		addressBookName = addressBookName.toLowerCase();
+		AddressBook ad = addressBook.get(addressBookName);
+		return ad.sortByCity();
+	}
+	
+	public static List<Contacts> sortByState(String addressBookName){
+		addressBookName = addressBookName.toLowerCase();
+		AddressBook ad = addressBook.get(addressBookName);
+		return ad.sortByState();
+	}
+	
+	public static List<Contacts> sortByZipCode(String addressBookName){
+		addressBookName = addressBookName.toLowerCase();
+		AddressBook ad = addressBook.get(addressBookName);
+		return ad.sortByZipCode();
+	}
     public static void main(String[] args ) throws IOException{
         addAddress("Book1");
         
@@ -154,6 +172,9 @@ public class AddressBookMain {
         System.out.println("\nCount people in state in addressBook 1 : "+countByState("Book1"));
         
         System.out.println("\nsorted by name : "+sortByName("Book1"));
+        System.out.println("\nsorted by city : "+sortByCity("book1"));
+        System.out.println("\nsorted by state: "+sortByState("Book1"));
+        System.out.println("\nsorted by zip  : "+sortByZipCode("book1"));
     }
     
 }
