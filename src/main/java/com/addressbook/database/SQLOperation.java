@@ -10,7 +10,7 @@ import java.util.List;
 
 import com.addressbook.apps.model.Contacts;
 
-public class SQLOperation{
+public class SQLOperation {
       private static Connection con;
       
       public static void add (Contacts contacts,String addressBookName) {
@@ -56,5 +56,24 @@ public class SQLOperation{
     		  list.add(temp);
     	  }
     	  return list;
+      }
+      
+      public static void UpdateDetailInDatabase(String name, Contacts contacts) {
+    	  try {
+    		  con = ConnectDatabase.getConnection();
+    		  String query = "Update contacts set last_name = ? , address = ? , city = ? , state = ? , zip = ? ,phone_no = ? , email = ? where first_name = ?";
+    		  PreparedStatement per = con.prepareStatement(query);
+    		  per.setString(1,contacts.getLastName());
+    		  per.setString(2,contacts.getAddress());
+    		  per.setString(3,contacts.getCity());
+    		  per.setString(4,contacts.getState());
+    		  per.setInt(5,contacts.getZip());
+    		  per.setString(6, contacts.getPhoneNo());
+    		  per.setString(7,contacts.getEmail());
+    		  per.setString(8, name);
+    		  int set = per.executeUpdate();
+    	  }catch(Exception e) {
+    		  System.out.println(e.getMessage());
+    	  }
       }
 }
